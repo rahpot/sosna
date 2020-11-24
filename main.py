@@ -11,6 +11,7 @@ class YellowCycles(QMainWindow):
         super().__init__()
         uic.loadUi('UI.ui', self)
         self.setWindowTitle('ui')
+        self.button.clicked.connect(self.draw)
         self.ok = 0
 
     def paintEvent(self, event):
@@ -21,15 +22,12 @@ class YellowCycles(QMainWindow):
         qp.end()
 
     def drawCycles(self, qp):
-        for i in range(200):
-            r = rd.randint(0, 255)
-            g = rd.randint(0, 255)
-            b = rd.randint(0, 255)
+        for i in range(3):
             x = rd.randint(0, 800)
             y = rd.randint(0, 700)
             height = rd.randint(10, 257)
-            qp.setBrush(QColor(r, g, b))
-            qp.setPen(QColor(r, g, b))
+            qp.setBrush(QColor(255, 255, 0))
+            qp.setPen(QColor(255, 255, 0))
             qp.drawEllipse(x, y, height, height)
 
     def draw(self):
